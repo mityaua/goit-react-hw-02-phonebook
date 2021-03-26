@@ -1,7 +1,7 @@
 const ContactItem = ({ contact }) => {
   return (
     <li>
-      <p>{contact}</p>
+      <span>{contact.name}</span>: <span>{contact.number}</span>
     </li>
   );
 };
