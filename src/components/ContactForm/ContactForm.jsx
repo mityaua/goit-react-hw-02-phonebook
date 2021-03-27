@@ -1,19 +1,16 @@
 import { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-class Form extends Component {
+class ContactForm extends Component {
   state = {
     name: '',
     number: '',
   };
 
-  uniqId = uuidv4();
-
   hanldeChange = event => {
     const { name, value } = event.currentTarget;
 
     this.setState({
-      id: this.uniqId,
       [name]: value,
     });
   };
@@ -21,13 +18,20 @@ class Form extends Component {
   hanldeSubmit = event => {
     event.preventDefault();
 
-    this.props.onSubmit(this.state);
+    const contact = {
+      id: uuidv4(),
+      name: this.state.name,
+      number: this.state.number,
+    };
+
+    this.props.onSubmit(contact);
 
     this.reset();
   };
 
   reset = () => {
     this.setState({
+      id: '',
       name: '',
       number: '',
     });
@@ -66,4 +70,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default ContactForm;
