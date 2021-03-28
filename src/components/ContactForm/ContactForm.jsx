@@ -35,7 +35,7 @@ class ContactForm extends Component {
       number: this.state.number,
     };
 
-    this.props.onSubmit(contact);
+    this.props.onSubmit(contact); // Внешний метод в пропсах класса
 
     this.resetForm();
   };
