@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import Container from './components/Container';
-// import PropTypes from 'prop-types';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
@@ -8,9 +7,6 @@ import ContactList from './components/ContactList';
 import styles from './App.module.scss';
 
 class App extends Component {
-  // Дописать пропы ?
-  // static propTypes = {};
-
   state = {
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -21,7 +17,7 @@ class App extends Component {
     filter: '',
   };
 
-  // Добавляет контакт
+  // Добавляет контакт (нужно сократить или вынести)
   addContact = newContact => {
     const duplicateName = this.state.contacts.find(
       contact => contact.name === newContact.name,
@@ -37,7 +33,7 @@ class App extends Component {
     }));
   };
 
-  // Следит за полем фильтрации
+  // Следит за полем фильтрации и пишет в стейт
   changeFilter = event => {
     this.setState({ filter: event.currentTarget.value });
   };

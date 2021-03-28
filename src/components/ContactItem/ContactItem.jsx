@@ -1,5 +1,6 @@
 import styles from './ContactItem.module.scss';
 
+// Принимает один контакт и метод, для удаления контакта
 const ContactItem = ({ contact, onDeleteContact }) => {
   return (
     <li className={styles.item}>
