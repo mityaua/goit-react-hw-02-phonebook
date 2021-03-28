@@ -1,8 +1,17 @@
+import styles from './ContactItem.module.scss';
+
 const ContactItem = ({ contact, onDeleteContact }) => {
   return (
-    <li>
-      <span>{contact.name}</span>: <span>{contact.number}</span>
-      <button type="button" onClick={() => onDeleteContact(contact.id)}>
+    <li className={styles.item}>
+      <span className={styles.name}>{contact.name}: </span>
+      <a href={`tel:${contact.number}`} className={styles.number}>
+        {contact.number}
+      </a>
+      <button
+        className={styles.button}
+        type="button"
+        onClick={() => onDeleteContact(contact.id)}
+      >
         Delete
       </button>
     </li>

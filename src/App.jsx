@@ -1,8 +1,11 @@
 import { Component } from 'react';
+import Container from './components/Container';
 // import PropTypes from 'prop-types';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
+
+import styles from './App.module.scss';
 
 class App extends Component {
   // Дописать пропы ?
@@ -62,16 +65,16 @@ class App extends Component {
     const filteredResults = this.filterContacts();
 
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container>
+        <h1 className={styles.title}>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
-        <h2>Contacts</h2>
+        <h2 className={styles.title}>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
         <ContactList
           contacts={filteredResults}
           onDeleteContact={this.deleteContact}
         />
-      </div>
+      </Container>
     );
   }
 }
