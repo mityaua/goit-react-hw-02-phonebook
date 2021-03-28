@@ -1,9 +1,13 @@
 import { Component } from 'react';
+// import PropTypes from 'prop-types';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
 
 class App extends Component {
+  // Дописать пропы ?
+  // static propTypes = {};
+
   state = {
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -46,9 +50,12 @@ class App extends Component {
     );
   };
 
-  // Удаляет контакт (дописать)
-  // deleteContact = () => {
-  // }
+  // Удаляет контакт
+  deleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  };
 
   render() {
     const { filter } = this.state;
@@ -60,7 +67,10 @@ class App extends Component {
         <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
-        <ContactList contacts={filteredResults} />
+        <ContactList
+          contacts={filteredResults}
+          onDeleteContact={this.deleteContact}
+        />
       </div>
     );
   }

@@ -1,7 +1,12 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 class ContactForm extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     name: '',
     number: '',
@@ -26,10 +31,10 @@ class ContactForm extends Component {
 
     this.props.onSubmit(contact);
 
-    this.reset();
+    this.resetForm();
   };
 
-  reset = () => {
+  resetForm = () => {
     this.setState({
       id: '',
       name: '',
